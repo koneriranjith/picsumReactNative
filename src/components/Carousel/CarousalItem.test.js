@@ -1,6 +1,6 @@
 import React from 'react';
-import {shallow} from 'enzyme';
 import CarouselItem from './CarouselItem';
+import { shallow } from 'enzyme';
 
 describe('Carousel Item', () => {
     describe('Rendering', () => {

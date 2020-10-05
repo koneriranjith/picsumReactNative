@@ -1,8 +1,8 @@
 import 'react-native';
 import React from 'react';
 import Index from './index';
-import renderer from 'react-test-renderer';
 import { shallow } from 'enzyme';
+import renderer from 'react-test-renderer';
 
 let mockData = {
     horizontal: true,
@@ -29,14 +29,8 @@ test('should render Text loading without Data', ()=>{
     expect(container.children.props.children).toEqual('loading...');
 })
 
-test('should render component with Data', ()=>{
+test('should render corouselItem component with Data', ()=>{
     const container = renderer.create(<Index {...mockData}/>).toJSON();
-    expect(container).toMatchSnapshot()
-    expect(container.children[1].children.length).toEqual(10);
-})
-
-test('should render Image', ()=>{
-    const container = shallow(<Index {...mockData}/>).props();
-    console.log('In final res',container)
-    expect(container.find('img').length).toEqual(1);
+    const CarouselItem = container.children[0].children[0].children
+    expect(CarouselItem).toHaveLength(mockData.data.length)
 })
